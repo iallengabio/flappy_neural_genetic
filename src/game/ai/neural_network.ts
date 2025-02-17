@@ -4,8 +4,8 @@ export class NeuralNetwork {
     private outputNodes: number;
     
     // Pesos e biases
-    private weightsIH: number[][]; // Input -> Hidden
-    private weightsHO: number[][]; // Hidden -> Output
+    public weightsIH: number[][]; // Input -> Hidden
+    public weightsHO: number[][]; // Hidden -> Output
     private biasH: number[];
     private biasO: number[];
   

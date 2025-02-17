@@ -4,36 +4,27 @@ import { Player } from './player';
 import p5 from 'p5';
 
 export class NeuralPlayer extends Player {
-  private brain: NeuralNetwork;
-  private pipeManager: PipeManager; // Nova propriedade
 
-  constructor(p: p5, pipeManager: PipeManager) {
+  constructor(
+    p: p5,
+    private pipeManager: PipeManager,
+    public network: NeuralNetwork
+  ) {
     super(p);
-    this.pipeManager = pipeManager;
-    this.brain = new NeuralNetwork(2, 2, 1); // 2-2-1
   }
 
   update() {
     if (!this.isAlive) return;
 
-    // Obtém inputs do jogo
     const inputs = this.getNetworkInputs();
-    
     if (inputs) {
-      const decision = this.brain.predict(inputs)[0];
-      
-      // Decide pular se a saída > 0.5
+      const decision = this.network.predict(inputs)[0];
       if (decision > 0.5) {
         this.bird.jump();
       }
     }
 
     this.bird.update();
-  }
-
-  reset(){
-    super.reset();
-    this.brain = new NeuralNetwork(2, 2, 1);
   }
 
   private getNetworkInputs(): number[] | null {

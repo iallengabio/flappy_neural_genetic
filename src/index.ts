@@ -6,7 +6,7 @@ const sketch = (p: p5) => {
 
   p.setup = () => {
     p.createCanvas(800, 600);
-    game = new Game(p,0,1000);
+    game = new Game(p,200);
   };
 
   p.draw = () => {
