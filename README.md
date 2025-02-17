@@ -1,2 +1,1 @@
-# flappy_neural_genetic
- 
+# Flappy Bird AI - Projeto Educacional
